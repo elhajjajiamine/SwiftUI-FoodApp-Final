@@ -54,41 +54,52 @@ struct Home: View {
                 .padding(.top,10)
                 
                 Divider()
-
-                ScrollView(.vertical, showsIndicators: false) {
-                    
-                    VStack(spacing:25){
-                        ForEach(HomeModel.filtered){Item in
-                            //Item View....
-                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
-                                ItemView(item: Item)
-                                HStack{
-                                    Text("FREE DELIVERY")
-                                        .foregroundColor(.white)
-                                        .padding(.vertical,10)
-                                        .padding(.horizontal)
-                                        .background(Color("Orange"))
-                                    
-                                    Spacer(minLength: 0)
-                                    
-                                    Button(action:{},label:{
-                                        Image(systemName: "plus")
-                                            .foregroundColor(.white)
-                                            .padding(10)
-                                            .background(Color("Orange"))
-                                            .clipShape(Circle())
-                                    })
-                                }
-                                .padding(.trailing,10)
-                                .padding(.top,10)
-                                    
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 30)
-                            
-                        }
-                    }
-                    .padding(.top,10)
+                
+                if HomeModel.items.isEmpty{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
                 }
+                else{
+                    ScrollView(.vertical, showsIndicators: false) {
+                        
+                        VStack(spacing:25){
+                            ForEach(HomeModel.filtered){Item in
+                                //Item View....
+                                ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
+                                    ItemView(item: Item)
+                                    HStack{
+                                        Text("FREE DELIVERY")
+                                            .foregroundColor(.white)
+                                            .padding(.vertical,10)
+                                            .padding(.horizontal)
+                                            .background(Color("Orange"))
+                                        
+                                        Spacer(minLength: 0)
+                                        
+                                        Button(action:{
+                                            self.HomeModel.addToCart(item: Item)
+                                        },label:{
+                                            Image(systemName: Item.isAdded ? "checkmark" : "plus")
+                                                .foregroundColor(.white)
+                                                .padding(10)
+                                                .background(Item.isAdded ? Color.green : Color("Orange"))
+                                                .clipShape(Circle())
+                                        })
+                                    }
+                                    .padding(.trailing,10)
+                                    .padding(.top,10)
+                                        
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 30)
+                                
+                            }
+                        }
+                        .padding(.top,10)
+                    }
+
+                }
+
                 
             }
             //Side Menu.....

@@ -20,6 +20,8 @@
 		1074FA7125496CF0004492E9 /* HomeModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074FA7025496CF0004492E9 /* HomeModelView.swift */; };
 		10EA9CD6254AA3E7001E5D23 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA9CD5254AA3E7001E5D23 /* ItemView.swift */; };
 		10EA9CDC254AA478001E5D23 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10EA9CDB254AA478001E5D23 /* SDWebImageSwiftUI */; };
+		10EA9CE1254AB8B9001E5D23 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA9CE0254AB8B9001E5D23 /* Cart.swift */; };
+		10EA9CE6254AC417001E5D23 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA9CE5254AC417001E5D23 /* CartView.swift */; };
 		2AE323CBFA1D0CA212321C67 /* Pods_SwiftUI_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04E48F06E9404D57AB172CA /* Pods_SwiftUI_FoodApp.framework */; };
 		B54F9D35EB7E4EAED09BE0AB /* Pods_SwiftUI_FoodAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBD867C88C7C434CF274855 /* Pods_SwiftUI_FoodAppTests.framework */; };
 		EA5EFF58BAFCE567186E97DD /* Pods_SwiftUI_FoodApp_SwiftUI_FoodAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BED9FD302EFE42520BDC111 /* Pods_SwiftUI_FoodApp_SwiftUI_FoodAppUITests.framework */; };
@@ -61,6 +63,8 @@
 		1074FA6825496CD3004492E9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1074FA7025496CF0004492E9 /* HomeModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelView.swift; sourceTree = "<group>"; };
 		10EA9CD5254AA3E7001E5D23 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		10EA9CE0254AB8B9001E5D23 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		10EA9CE5254AC417001E5D23 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		43DE604AD97180D9A8BB4235 /* Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests/Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BED9FD302EFE42520BDC111 /* Pods_SwiftUI_FoodApp_SwiftUI_FoodAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_FoodApp_SwiftUI_FoodAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8818C6E5D8CEF9283D333423 /* Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests/Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				1074FA6825496CD3004492E9 /* Home.swift */,
 				104C3827254988AA00C72197 /* Menu.swift */,
 				10EA9CD5254AA3E7001E5D23 /* ItemView.swift */,
+				10EA9CE5254AC417001E5D23 /* CartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				103559E92549A7010019E88B /* Item.swift */,
+				10EA9CE0254AB8B9001E5D23 /* Cart.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EA9CE6254AC417001E5D23 /* CartView.swift in Sources */,
 				1074FA3A25496C8F004492E9 /* ContentView.swift in Sources */,
 				1074FA6925496CD3004492E9 /* Home.swift in Sources */,
 				1074FA3825496C8F004492E9 /* SwiftUI_FoodAppApp.swift in Sources */,
@@ -465,6 +472,7 @@
 				10EA9CD6254AA3E7001E5D23 /* ItemView.swift in Sources */,
 				103559EA2549A7010019E88B /* Item.swift in Sources */,
 				104C3828254988AA00C72197 /* Menu.swift in Sources */,
+				10EA9CE1254AB8B9001E5D23 /* Cart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

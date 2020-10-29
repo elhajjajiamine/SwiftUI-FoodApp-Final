@@ -29,7 +29,9 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var items : [Item] = []
     @Published var filtered : [Item] = []
 
-    
+    //Cart Data...
+    @Published var cartItem : [Cart] = []
+    @Published var ordered = false
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         //checking Location Acces
@@ -82,7 +84,7 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
     }
     
-    // Anonymous login for reading database...
+    //Anonymous login for reading database...
     func login(){
         Auth.auth().signInAnonymously { (res, err) in
             if err != nil {
@@ -128,4 +130,109 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
         }
     }
+    
+    //Add to cart function..
+    func addToCart(item: Item){
+         
+        //Checking it is added
+        self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        //Updating filtered array also for search bar results...
+        let filterIndex = self.filtered.firstIndex { (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+            
+        self.filtered[filterIndex].isAdded = !item.isAdded
+
+        
+        if item.isAdded{
+            //removing from list..
+            self.cartItem.remove(at: getIndex(item: item, isCartIndex: true))
+            return
+        }
+        //Else adding...
+        self.cartItem.append(Cart(item: item, quantity: 1))
+    }
+    
+    func getIndex(item: Item,isCartIndex: Bool)->Int{
+         
+         let index = self.items.firstIndex { (item1) -> Bool in
+             
+             return item.id == item1.id
+         } ?? 0
+         
+         let cartIndex = self.cartItem.firstIndex { (item1) -> Bool in
+             
+             return item.id == item1.item.id
+         } ?? 0
+         
+         return isCartIndex ? cartIndex : index
+     }
+    
+    func calculateTotalPrice()-> String{
+        var price : Float = 0
+        cartItem.forEach { (item) in
+            price += Float(item.quantity) * Float(truncating: item.item.item_cost)
+        }
+        return getPrice(value : price)
+    }
+    
+    func getPrice(value : Float)->String{
+        
+        let format = NumberFormatter()
+        format.numberStyle = .currency
+        
+        return format.string(from: NSNumber(value:value)) ?? ""
+    }
+    
+    //Writing order data into firestore
+    func updateOrder(){
+            
+            let db = Firestore.firestore()
+            
+            // creating dict of food details...
+            
+            if ordered{
+                
+                ordered = false
+                
+                db.collection("Users").document(Auth.auth().currentUser!.uid).delete { (err) in
+                    
+                    if err != nil{
+                        self.ordered = true
+                    }
+                }
+                
+                return
+            }
+            
+            var details : [[String: Any]] = []
+            
+            cartItem.forEach { (cart) in
+                
+                details.append([
+                
+                    "item_name": cart.item.item_name,
+                    "item_quantity": cart.quantity,
+                    "item_cost": cart.item.item_cost
+                ])
+            }
+            
+            ordered = true
+            
+            db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+                
+                "ordered_food": details,
+                "total_cost": calculateTotalPrice(),
+                "location": GeoPoint(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+                
+            ]) { (err) in
+                
+                if err != nil{
+                    self.ordered = false
+                    return
+                }
+                print("success")
+            }
+        }
 }
