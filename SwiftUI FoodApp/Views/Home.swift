@@ -42,16 +42,13 @@ struct Home: View {
                 Divider()
                 
                 HStack(spacing:15){
+                    
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .foregroundColor(Color("DarkGrey"))
                     TextField("Search", text: $HomeModel.search)
                     
-                    if HomeModel.search != "" {
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Image(systemName: "magnifyingglass")
-                                .font(.title2)
-                                .foregroundColor(Color("DarkGrey"))
-                        })
-                        .animation(.easeIn)
-                    }
+                    
                 }
                 .padding(.horizontal)
                 .padding(.top,10)
@@ -61,12 +58,36 @@ struct Home: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(spacing:25){
-                        ForEach(HomeModel.items){Item in
+                        ForEach(HomeModel.filtered){Item in
                             //Item View....
-                            Text(Item.item_name)
-                    
+                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
+                                ItemView(item: Item)
+                                HStack{
+                                    Text("FREE DELIVERY")
+                                        .foregroundColor(.white)
+                                        .padding(.vertical,10)
+                                        .padding(.horizontal)
+                                        .background(Color("Orange"))
+                                    
+                                    Spacer(minLength: 0)
+                                    
+                                    Button(action:{},label:{
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.white)
+                                            .padding(10)
+                                            .background(Color("Orange"))
+                                            .clipShape(Circle())
+                                    })
+                                }
+                                .padding(.trailing,10)
+                                .padding(.top,10)
+                                    
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 30)
+                            
                         }
                     }
+                    .padding(.top,10)
                 }
                 
             }
@@ -101,6 +122,24 @@ struct Home: View {
             // calling location delegate...
             HomeModel.locationManager.delegate = HomeModel
               
+        })
+        .onChange(of: HomeModel.search, perform: { value in
+            //To avoid continues search requests....
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                if value == HomeModel.search && HomeModel.search != ""{
+                    //Search data...
+                    HomeModel.filterData()
+                    
+                }
+            }
+            if HomeModel.search == "" {
+                //rest all data...
+                withAnimation(.linear){
+                    HomeModel.filtered = HomeModel.items
+
+                }
+            }
+            
         })
     }
 }

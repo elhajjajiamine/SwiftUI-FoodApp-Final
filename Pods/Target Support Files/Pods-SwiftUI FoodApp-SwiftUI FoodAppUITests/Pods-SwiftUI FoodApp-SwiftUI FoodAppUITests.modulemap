@@ -1,0 +1,6 @@
+framework module Pods_SwiftUI_FoodApp_SwiftUI_FoodAppUITests {
+  umbrella header "Pods-SwiftUI FoodApp-SwiftUI FoodAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
