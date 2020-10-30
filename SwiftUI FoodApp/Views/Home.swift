@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Home: View {
     @ObservedObject var HomeModel = HomeViewModel()
+    @State var categoryIndex = 0
+
 
     
     var body: some View {
@@ -45,7 +47,7 @@ struct Home: View {
                     
                     Image(systemName: "magnifyingglass")
                         .font(.title2)
-                        .foregroundColor(Color("DarkGrey"))
+                        .foregroundColor(Color("WG"))
                     TextField("Search", text: $HomeModel.search)
                     
                     
@@ -55,6 +57,17 @@ struct Home: View {
                 
                 Divider()
                 
+//                FiltreView()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(){
+                        ForEach(0..<categories.count, id:\.self){data in
+                            FiltreView(data: data, index: $categoryIndex)
+
+                        }.padding()
+
+                    }
+                }
+
                 if HomeModel.items.isEmpty{
                     Spacer()
                     ProgressView()

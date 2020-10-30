@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Menu: View {
     @ObservedObject var homeData : HomeViewModel
+    
     var body: some View {
         
         VStack{

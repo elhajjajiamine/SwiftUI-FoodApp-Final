@@ -10,6 +10,7 @@
 		103559EA2549A7010019E88B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103559E92549A7010019E88B /* Item.swift */; };
 		104C3828254988AA00C72197 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C3827254988AA00C72197 /* Menu.swift */; };
 		104C382D2549A01C00C72197 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 104C382C2549A01C00C72197 /* GoogleService-Info.plist */; };
+		10716E31254B139D00F654B8 /* FiltreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10716E30254B139D00F654B8 /* FiltreView.swift */; };
 		1074FA3825496C8F004492E9 /* SwiftUI_FoodAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074FA3725496C8F004492E9 /* SwiftUI_FoodAppApp.swift */; };
 		1074FA3A25496C8F004492E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074FA3925496C8F004492E9 /* ContentView.swift */; };
 		1074FA3C25496C8F004492E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1074FA3B25496C8F004492E9 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		103559E92549A7010019E88B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		104C3827254988AA00C72197 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		104C382C2549A01C00C72197 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10716E30254B139D00F654B8 /* FiltreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltreView.swift; sourceTree = "<group>"; };
 		1074FA3425496C8F004492E9 /* SwiftUI FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI FoodApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1074FA3725496C8F004492E9 /* SwiftUI_FoodAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_FoodAppApp.swift; sourceTree = "<group>"; };
 		1074FA3925496C8F004492E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				104C3827254988AA00C72197 /* Menu.swift */,
 				10EA9CD5254AA3E7001E5D23 /* ItemView.swift */,
 				10EA9CE5254AC417001E5D23 /* CartView.swift */,
+				10716E30254B139D00F654B8 /* FiltreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			files = (
 				10EA9CE6254AC417001E5D23 /* CartView.swift in Sources */,
 				1074FA3A25496C8F004492E9 /* ContentView.swift in Sources */,
+				10716E31254B139D00F654B8 /* FiltreView.swift in Sources */,
 				1074FA6925496CD3004492E9 /* Home.swift in Sources */,
 				1074FA3825496C8F004492E9 /* SwiftUI_FoodAppApp.swift in Sources */,
 				1074FA7125496CF0004492E9 /* HomeModelView.swift in Sources */,
